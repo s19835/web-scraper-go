@@ -15,5 +15,11 @@ type items struct {
 func main() {
 	c := colly.NewCollector()
 
+	c.OnHTML("div[data-test-course-name]", func(h *colly.HTMLElement) {
+		fmt.Println(h.Text)
+	})
+
+	c.Visit("https://app.codecrafters.io/catalog")
+
 	fmt.Println("webscraper 1.0 ", c)
 }
