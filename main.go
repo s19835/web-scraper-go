@@ -7,9 +7,8 @@ import (
 )
 
 type items struct {
-	Name   string `json:"name"`
-	Price  string `json:"price"`
-	ImgUrl string `json:"imgUrl"`
+	Name        string `json:"name"`
+	Description string `json:"description"`
 }
 
 func main() {
@@ -20,7 +19,11 @@ func main() {
 	// })
 
 	c.OnHTML("a[data-test-course-card]", func(h *colly.HTMLElement) {
-		fmt.Println(h.ChildText("div[data-test-course-name]"), " : ", h.ChildText("div[data-test-course-description]"))
+		courses := items{
+			Name:        h.ChildText("div[data-test-course-name]"),
+			Description: h.ChildText("div[data-test-course-description]"),
+		}
+		fmt.Println(courses)
 	})
 
 	c.Visit("https://app.codecrafters.io/catalog")
