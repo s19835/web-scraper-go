@@ -41,7 +41,7 @@ func main() {
 		fmt.Println(err.Error())
 	}
 
-	os.WriteFile("codecrafters-catalog.json", content, 0644)
+	os.WriteFile("output-jsons/codecrafters-catalog.json", content, 0644)
 
 	fmt.Println("webscraper 1.0 ", c)
 }
