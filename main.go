@@ -9,6 +9,7 @@ import (
 type items struct {
 	Name        string `json:"name"`
 	Description string `json:"description"`
+	Stages      string `json:"stages"`
 }
 
 func main() {
@@ -22,6 +23,7 @@ func main() {
 		courses := items{
 			Name:        h.ChildText("div[data-test-course-name]"),
 			Description: h.ChildText("div[data-test-course-description]"),
+			Stages:      h.ChildText("span[class='text-xs text-gray-500']"),
 		}
 		fmt.Println(courses)
 	})
